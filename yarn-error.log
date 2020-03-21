@@ -1,0 +1,38 @@
+Arguments: 
+  /Users/yangzhou/.nvm/versions/node/v13.8.0/bin/node /usr/local/Cellar/yarn/1.22.0/libexec/bin/yarn.js add -D @babel/core @babel/preset-env babel-loader babel-plugin-component copy-webpack-plugin cross-env css-loader eslint eslint-config-airbnb eslint-config-airbnb-base eslint-loader eslint-plugin-import eslint-plugin-vue file-loader husky lint-staged
+
+PATH: 
+  /usr/local/Cellar/pyenv-virtualenv/1.1.5/shims:/Users/yangzhou/.pyenv/shims:/Users/yangzhou/.nvm/versions/node/v13.8.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mysql/bin:/usr/local/mysql/support-files
+
+Yarn version: 
+  1.22.0
+
+Node version: 
+  13.8.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@babel%2fcore: tunneling socket could not be established, cause=connect ECONNREFUSED 127.0.0.1:1087
+      at ClientRequest.onError (/usr/local/Cellar/yarn/1.22.0/libexec/lib/cli.js:152213:17)
+      at Object.onceWrapper (events.js:428:26)
+      at ClientRequest.emit (events.js:321:20)
+      at Socket.socketErrorListener (_http_client.js:432:9)
+      at Socket.emit (events.js:321:20)
+      at emitErrorNT (internal/streams/destroy.js:84:8)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+
+npm manifest: 
+  {
+    "name": "data-table-yimian",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

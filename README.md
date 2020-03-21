@@ -12,5 +12,6 @@ npm run build
 
 ## How to use
 
-1. npm run build，插件会被打包到 public 文件夹；
-2. 把 public 文件夹的静态文件放到任意服务器上即可
+1. npm run build，插件会被打包到 ym-tableau-table 文件夹
+2. 把 ym-tableau-table 文件夹的静态文件放到任意服务器上
+3. 修改 ```ym-data-table.trex``` 文件中的```source-location```路径

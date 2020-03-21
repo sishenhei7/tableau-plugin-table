@@ -21,6 +21,11 @@
             }
         }
     },
+    "ignorePatterns": [
+        "app/static/",
+        "ym-tableau-table/",
+        "node_modules/"
+    ],
     "rules": {
         "global-require": 0,
         "implicit-arrow-linebreak": 0,
@@ -57,6 +62,7 @@
                 "code": 120
             }
         ],
-        "space-infix-ops": 0
+        "space-infix-ops": 0,
+        "class-methods-use-this": 0
     }
 }

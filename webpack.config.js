@@ -6,16 +6,15 @@ module.exports = {
   mode: process.env.NODE_ENV,
   devtool: process.env.NODE_ENV === 'development' ? 'source-map' : 'none',
   entry: {
-    popup: './js/popup.js',
-    background: './js/background.js',
-    contentScript: './js/contentScript.js',
+    index: './app/index.js',
+    // dialog: './dialog/index.js',
   },
   output: {
-    filename: './scripts/[name].js',
-    path: path.resolve(__dirname, 'ym-sycm-plugin'),
+    filename: './[name].js',
+    path: path.resolve(__dirname, 'ym-tableau-table'),
   },
   devServer: {
-    contentBase: path.join(__dirname, ''),
+    contentBase: path.join(__dirname, 'ym-tableau-table'),
     publicPath: '',
     watchContentBase: true,
     compress: true,
@@ -93,25 +92,25 @@ module.exports = {
     new VueLoaderPlugin(),
     new CopyPlugin([
       {
-        from: 'manifest.json',
+        from: 'index.html',
         to: '',
       },
       {
-        from: 'background.html',
-        to: '',
+        from: 'app/static',
+        to: 'static',
       },
-      {
-        from: 'popup.html',
-        to: '',
-      },
-      {
-        from: 'icons',
-        to: 'icons',
-      },
-      {
-        from: 'images',
-        to: 'images',
-      },
+    //   {
+    //     from: 'manifest.json',
+    //     to: '',
+    //   },
+    //   {
+    //     from: 'background.html',
+    //     to: '',
+    //   },
+    //   {
+    //     from: 'images',
+    //     to: 'images',
+    //   },
     ]),
   ],
 };
