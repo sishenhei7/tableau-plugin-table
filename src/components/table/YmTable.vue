@@ -2,7 +2,7 @@
   <el-table
     v-if="data"
     id="js-tableau-table"
-    style="width: 100%; margin-top: 10px;"
+    style="width: 100%"
     :data="data"
     border
     fit
