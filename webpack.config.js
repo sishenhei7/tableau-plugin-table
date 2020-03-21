@@ -6,8 +6,8 @@ module.exports = {
   mode: process.env.NODE_ENV,
   devtool: process.env.NODE_ENV === 'development' ? 'source-map' : 'none',
   entry: {
-    index: './app/index.js',
-    // dialog: './dialog/index.js',
+    index: './src/index.js',
+    // dialog: './src/index.js',
   },
   output: {
     filename: './[name].js',

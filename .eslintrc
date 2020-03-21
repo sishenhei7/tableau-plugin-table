@@ -22,7 +22,7 @@
         }
     },
     "ignorePatterns": [
-        "app/static/",
+        "src/static/",
         "ym-tableau-table/",
         "node_modules/"
     ],
