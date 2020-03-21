@@ -29,3 +29,8 @@ npm run build
 ## open /Applications/Tableau\ Desktop\ <version>.app --args --remote-debugging-port=8696
 open /Applications/Tableau\ Desktop\ 2020.1.app --args --remote-debugging-port=8696
 ```
+
+## ToDo
+
+1. 增加 config 弹窗进行自定义配置
+2. 调整样式
