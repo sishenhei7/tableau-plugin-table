@@ -18,8 +18,8 @@ npm run build
 
 ## How to use locally
 
-1.```npm run start```
-2.导入主目录下面的 ```ym-data-table.trex``` 文件
+1. ```npm run start```
+2. 导入主目录下面的 ```ym-data-table.trex``` 文件
 
 ## How to debug in tableau
 
