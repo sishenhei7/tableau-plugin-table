@@ -96,13 +96,13 @@ module.exports = {
         to: '',
       },
       {
-        from: 'app/static',
+        from: 'src/static',
         to: 'static',
       },
-    //   {
-    //     from: 'manifest.json',
-    //     to: '',
-    //   },
+      {
+        from: 'ym-data-table.trex',
+        to: '',
+      },
     //   {
     //     from: 'background.html',
     //     to: '',
