@@ -1,11 +1,6 @@
 import table from './components/table';
-import { formatTableauData } from './utils/util';
-import {
-  getSheetByName,
-  getDataFromSheet,
-  registerEventsToSheet,
-  unregisterEventsToSheet,
-} from './utils/tableau';
+import { formatTableauData } from './utils/helpers';
+import tableauUtils from './utils/tableau';
 import './styles/app.scss';
 
 /* global tableau */
@@ -29,11 +24,12 @@ class App {
   }
 
   render() {
-    unregisterEventsToSheet();
+    // 每次渲染的时候重新绑定事件，防止用户中途添加 sheet 等操作
+    tableauUtils.unregisterEventsToSheet();
 
-    this.worksheet = getSheetByName(this.sheetName);
+    this.worksheet = tableauUtils.getSheetByName(this.sheetName);
 
-    getDataFromSheet(this.worksheet)
+    tableauUtils.getDataFromSheet(this.worksheet)
       .then((res) => {
         this.sheetData = res;
 
@@ -44,7 +40,7 @@ class App {
           keywordsField: 'nlp_matched_key',
         });
 
-        registerEventsToSheet(this.worksheet, () => {
+        tableauUtils.registerEventsToSheet(this.worksheet, () => {
           this.render();
         });
       });

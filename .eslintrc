@@ -22,7 +22,7 @@
         }
     },
     "ignorePatterns": [
-        "src/static/",
+        "static/",
         "ym-tableau-table/",
         "node_modules/"
     ],
@@ -63,6 +63,7 @@
             }
         ],
         "space-infix-ops": 0,
-        "class-methods-use-this": 0
+        "class-methods-use-this": 0,
+        "vue/no-v-html": 0
     }
 }

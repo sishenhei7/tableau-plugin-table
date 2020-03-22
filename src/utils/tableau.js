@@ -4,17 +4,17 @@ let unregisterFilterEventListener = null;
 let unregisterMarkSelectionEventListener = null;
 // let unregisterParameterEventListener = null;
 
-export function getSheetByName(sheetName) {
+function getSheetByName(sheetName) {
   const { worksheets } = tableau.extensions.dashboardContent.dashboard;
 
   return worksheets.find(sheet => sheet.name === sheetName);
 }
 
-export function getDataFromSheet(worksheet, limit) {
+function getDataFromSheet(worksheet, limit) {
   return worksheet.getUnderlyingDataAsync({ maxRows: limit });
 }
 
-export function registerEventsToSheet(worksheet, cb) {
+function registerEventsToSheet(worksheet, cb) {
   if (typeof cb === 'function') {
     unregisterFilterEventListener = worksheet.addEventListener(
       tableau.TableauEventType.FilterChanged,
@@ -28,7 +28,7 @@ export function registerEventsToSheet(worksheet, cb) {
   }
 }
 
-export function unregisterEventsToSheet() {
+function unregisterEventsToSheet() {
   if (unregisterFilterEventListener) {
     unregisterFilterEventListener();
   }
@@ -37,3 +37,10 @@ export function unregisterEventsToSheet() {
     unregisterMarkSelectionEventListener();
   }
 }
+
+export default {
+  getSheetByName,
+  getDataFromSheet,
+  registerEventsToSheet,
+  unregisterEventsToSheet,
+};
