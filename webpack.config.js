@@ -11,10 +11,10 @@ module.exports = {
   },
   output: {
     filename: './[name].js',
-    path: path.resolve(__dirname, 'ym-tableau-table'),
+    path: path.resolve(__dirname, 'docs'),
   },
   devServer: {
-    contentBase: path.join(__dirname, 'ym-tableau-table'),
+    contentBase: path.join(__dirname, 'docs'),
     publicPath: '',
     watchContentBase: true,
     compress: true,
