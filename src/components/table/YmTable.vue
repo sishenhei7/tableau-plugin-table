@@ -2,17 +2,22 @@
   <el-table
     v-if="data"
     id="js-tableau-table"
+    :data="sortedData"
+    empty-text="暂无数据，请点击右上角配置数据"
     style="width: 100%"
-    :data="data"
-    border
     fit
+    highlight-current-row
+    @sort-change="handleSortChange"
   >
-    <template v-for="field in Object.keys(data[0] || {})">
+    <template v-for="(field, index) in Object.keys(data[0] || {})">
       <el-table-column
         v-if="field === sentenceField"
         :key="field"
         :prop="field"
         :label="field"
+        sortable="custom"
+        :min-width="columnWidth[index] || ''"
+        :sort-orders="['ascending', 'descending']"
       >
         <template slot-scope="scope">
           <div v-html="highlight(scope.row[sentenceField], scope.row[keywordsField])" />
@@ -23,6 +28,9 @@
         :key="field"
         :prop="field"
         :label="field"
+        sortable="custom"
+        :min-width="columnWidth[index] || ''"
+        :sort-orders="['ascending', 'descending']"
       >
         <template slot-scope="scope">
           {{ scope.row[field] === '%null%' ? 'Null' : scope.row[field] }}
@@ -38,6 +46,7 @@ import {
   Table,
   TableColumn,
 } from 'element-ui';
+import { getValueByPath, compare } from '../../utils/util';
 
 Vue.use(Table);
 Vue.use(TableColumn);
@@ -47,7 +56,7 @@ export default {
   props: {
     data: {
       type: Array,
-      default: null,
+      default: () => ([]),
     },
     sentenceField: {
       type: String,
@@ -57,9 +66,38 @@ export default {
       type: String,
       default: '',
     },
+    columnWidth: {
+      type: Array,
+      default: () => ([]),
+    },
   },
   data() {
-    return {};
+    return {
+      sortOrder: '',
+    };
+  },
+  computed: {
+    sortedData() {
+      const list = [...this.data];
+
+      // 排序
+      if (this.sortOrder && this.sortOrder.order) {
+        const tOrder = this.sortOrder.order === 'ascending';
+        list.sort((a, b) => {
+          let tA = getValueByPath(a, this.sortOrder.prop) || '-';
+          let tB = getValueByPath(b, this.sortOrder.prop) || '-';
+
+          if (Array.isArray(tA) && Array.isArray(tB)) {
+            tA = tA.join('');
+            tB = tB.join('');
+          }
+
+          return tOrder ? compare(tA, tB) : compare(tB, tA);
+        });
+      }
+
+      return list;
+    },
   },
   methods: {
     highlight(sentence, keywords) {
@@ -75,6 +113,9 @@ export default {
       });
 
       return result;
+    },
+    handleSortChange({ column, prop, order }) {
+      this.sortOrder = column ? { prop, order } : null;
     },
   },
 };

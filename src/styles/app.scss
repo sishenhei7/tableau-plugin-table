@@ -1,5 +1,19 @@
+@import './common.scss';
+
 #app {
     b {
         color: red;
+    }
+    .el-table {
+        thead {
+            th {
+                font-weight: bold;
+            }
+        }
+        .cell {
+            .caret-wrapper {
+                display: none;
+            }
+        }
     }
 }

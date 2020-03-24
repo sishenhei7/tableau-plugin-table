@@ -6,47 +6,47 @@ import './styles/app.scss';
 /* global tableau */
 class App {
   constructor() {
-    this.sheetName = null;
-    this.sheetData = null;
-    this.worksheet = null;
-
     this.init();
   }
 
   init() {
-    // ToDo: 自定义 sheetName
-    this.sheetName = 'Brand thread';
-
-    tableau.extensions.initializeAsync()
+    tableau.extensions.initializeAsync({ configure: tableauUtils.dialogconfigure })
       .then(() => {
         this.render();
+
+        tableauUtils.registerSettingsEvents(() => this.render());
+
+        tableauUtils.registerParametersEvents(() => this.render());
       });
   }
 
   render() {
     // 每次渲染的时候重新绑定事件，防止用户中途添加 sheet 等操作
-    tableauUtils.unregisterEventsToSheet();
+    tableauUtils.unregisterSheetEvents();
 
-    this.worksheet = tableauUtils.getSheetByName(this.sheetName);
+    const sheetName = tableau.extensions.settings.get('sheetName');
 
-    tableauUtils.getDataFromSheet(this.worksheet)
-      .then((res) => {
-        this.sheetData = res;
+    if (sheetName) {
+      const worksheet = tableauUtils.getSheetByName(sheetName);
 
-        const data = formatTableauData(this.sheetData);
-        table.setState({
-          data,
-          sentenceField: 'Post',
-          keywordsField: 'nlp_matched_key',
+      tableauUtils.getDataFromSheet(worksheet)
+        .then((res) => {
+          const data = formatTableauData(res);
+          const sentenceField = tableau.extensions.settings.get('sentenceField');
+          const keywordsField = tableau.extensions.settings.get('keywordsField');
+
+          table.setState({
+            data,
+            sentenceField,
+            keywordsField,
+          });
+
+          tableauUtils.registerSheetEvents(worksheet, () => this.render());
         });
-
-        tableauUtils.registerEventsToSheet(this.worksheet, () => {
-          this.render();
-        });
-      });
+    }
   }
 }
 
 window.onload = () => {
-  window.YmTable = new App();
+  window.YmApp = new App();
 };

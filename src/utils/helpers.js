@@ -1,3 +1,4 @@
+/* eslint-disable no-self-compare */
 export function test() {
   return 1 + 1;
 }
@@ -13,7 +14,9 @@ export function formatTableauData(tableauData) {
     const row = {};
 
     columnNames.forEach((columnName, index) => {
-      row[columnName] = item[index].value;
+      // 把数字字符串转化为数字
+      const val = Number(item[index].value);
+      row[columnName] = val !== val ? item[index].value : val;
     });
 
     result.push(row);

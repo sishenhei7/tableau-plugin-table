@@ -7,7 +7,7 @@ module.exports = {
   devtool: process.env.NODE_ENV === 'development' ? 'source-map' : 'none',
   entry: {
     index: './src/index.js',
-    // dialog: './src/index.js',
+    dialog: './src/dialog.js',
   },
   output: {
     filename: './[name].js',
@@ -93,6 +93,10 @@ module.exports = {
     new CopyPlugin([
       {
         from: 'index.html',
+        to: '',
+      },
+      {
+        from: 'dialog.html',
         to: '',
       },
       {
