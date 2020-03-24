@@ -10,8 +10,8 @@
       <!--url>https://tableaumagic.com/datatable/index.html</url-->
       <!-- <url>http://localhost:8080</url> -->
       <!-- <url>http://localhost:8765/Samples/data-table/index.html</url> -->
-      <url>https://sishenhei7.github.io/tableau-plugin-table/index.html</url>
-      <!-- <url>http://localhost:3009</url> -->
+      <!-- <url>https://sishenhei7.github.io/tableau-plugin-table/index.html</url> -->
+      <url>http://localhost:3009</url>
     </source-location>
     <icon>iVBORw0KGgoAAAANSUhEUgAAAEAAAABAAQMAAACQp+OdAAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAACdJREFUKJFjYKAS+EA04z8hxn9qMfg/UIEBJAcVg4hw/g8F+BhUAgCAtrS1v85ACwAAAABJRU5ErkJggg==</icon>
     <permissions>

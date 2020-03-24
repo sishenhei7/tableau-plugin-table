@@ -1,43 +1,54 @@
 <template>
-  <el-table
-    v-if="data"
-    id="js-tableau-table"
-    :data="sortedData"
-    empty-text="暂无数据，请点击右上角配置数据"
-    style="width: 100%"
-    fit
-    highlight-current-row
-    @sort-change="handleSortChange"
-  >
-    <template v-for="(field, index) in Object.keys(data[0] || {})">
-      <el-table-column
-        v-if="field === sentenceField"
-        :key="field"
-        :prop="field"
-        :label="field"
-        sortable="custom"
-        :min-width="columnWidth[index] || ''"
-        :sort-orders="['ascending', 'descending']"
-      >
-        <template slot-scope="scope">
-          <div v-html="highlight(scope.row[sentenceField], scope.row[keywordsField])" />
-        </template>
-      </el-table-column>
-      <el-table-column
-        v-else
-        :key="field"
-        :prop="field"
-        :label="field"
-        sortable="custom"
-        :min-width="columnWidth[index] || ''"
-        :sort-orders="['ascending', 'descending']"
-      >
-        <template slot-scope="scope">
-          {{ scope.row[field] === '%null%' ? 'Null' : scope.row[field] }}
-        </template>
-      </el-table-column>
-    </template>
-  </el-table>
+  <div>
+    <el-table
+      v-if="data && keywordsField && sentenceField"
+      id="js-tableau-table"
+      :data="sortedData"
+      empty-text="暂无数据，请点击右上角配置数据"
+      style="width: 100%"
+      fit
+      highlight-current-row
+      @sort-change="handleSortChange"
+    >
+      <template v-for="(field, index) in Object.keys(data[0] || {})">
+        <el-table-column
+          v-if="field === sentenceField"
+          :key="field"
+          :prop="field"
+          :label="field"
+          sortable="custom"
+          :min-width="columnWidth[index] || ''"
+          :sort-orders="['ascending', 'descending']"
+        >
+          <template slot-scope="scope">
+            <div v-html="highlight(scope.row[sentenceField], scope.row[keywordsField])" />
+          </template>
+        </el-table-column>
+        <el-table-column
+          v-else
+          :key="field"
+          :prop="field"
+          :label="field"
+          sortable="custom"
+          :min-width="columnWidth[index] || ''"
+          :sort-orders="['ascending', 'descending']"
+        >
+          <template slot-scope="scope">
+            {{ scope.row[field] === '%null%' ? 'Null' : scope.row[field] }}
+          </template>
+        </el-table-column>
+      </template>
+    </el-table>
+    <div v-else>
+      <h3>请先配置插件：</h3>
+      <ul>
+        <li>点击右上角的箭头</li>
+        <li>选择配置</li>
+        <li>选择表名、关键词字段和高亮字段</li>
+        <li>Enjoy</li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
