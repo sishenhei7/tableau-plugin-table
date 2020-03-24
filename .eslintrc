@@ -24,7 +24,8 @@
     "ignorePatterns": [
         "static/",
         "ym-tableau-table/",
-        "node_modules/"
+        "node_modules/",
+        "docs/"
     ],
     "rules": {
         "global-require": 0,
