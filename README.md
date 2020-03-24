@@ -12,9 +12,10 @@ npm run build
 
 ## How to use
 
-1. ```npm run build```，插件会被打包到 ym-tableau-table 文件夹
-2. 把 ym-tableau-table 文件夹的静态文件放到任意服务器上
-3. 修改 ```ym-data-table.trex``` 文件中的```source-location```路径
+1. 首先配置```src/utils/tableau.js```里面```dialogconfigure```方法里面```dialog```的路径
+2. ```npm run build```，插件会被打包到 ym-tableau-table 文件夹
+3. 把 ym-tableau-table 文件夹的静态文件放到任意服务器上
+4. 修改 ```ym-data-table.trex``` 文件中的```source-location```路径
 
 ## How to use locally
 

@@ -72,7 +72,7 @@ function registerParametersEvents(cb) {
 
 function dialogconfigure() {
   const input = '';
-  const popupUrl = `${window.location.origin}/tableau-plugin-table/dialog.html`;
+  const popupUrl = `${window.location.origin}/dialog.html`;
 
   tableau.extensions.ui.displayDialogAsync(popupUrl, input, { height: 350, width: 600 }).then((closePayload) => {
     // The close payload is returned from the popup extension via the closeDialog method.
